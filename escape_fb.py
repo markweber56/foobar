@@ -59,8 +59,6 @@ class Escape:
                 new_pos = self.get_pos(s)
                 self.graph[s] = new_pos
                 pos += new_pos
-        for k, v in self.graph.items():
-            print k,' : ',v
         return self.graph
 
     def get_f(self):
@@ -69,46 +67,14 @@ class Escape:
                 self.best = len(b)
         return self.best
 
-def remap(g1, idx):
-    t = 0
-    v = [0 for in i in range(le
-    print 'g: ',g
-    for r, row in enumerate(g1):
-        for c, col in enumerate(row):
-            if g1[r][c] == 1:
-                print 'equal1'
-                print 'r: ',r,' c: ',c
-                t += 1
-                if t != idx:
-                    g[r][c] = 1
-                print g
-    return g
-
-
-
-
-
-
-
 if __name__ == '__main__':
-    grid = [[0, 1, 1, 0], [1, 0, 0, 1], [1, 1, 0, 0], [1, 1, 1, 0]]
+    # grid = [[0, 1, 1, 0], [0, 0, 0, 1], [1, 1, 0, 0], [1, 1, 1, 0]]
     grid = [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0]]
-    '''
+    for row in grid:
+        print row
     escape = Escape(grid)
     graph = escape.getgraph()
     escape.walk([0])
     fastest = escape.get_f()
     print 'branches: ',escape.branches
     print 'fast: ',fastest
-    '''
-    tot = 0
-    for r in grid:
-        for c in r:
-            if c == 1:
-                tot += 1
-    print tot
-    for idx in range(tot+1):
-        grid2 = remap(grid, idx)
-        for row in grid2:
-            print row
-        print '\n'
